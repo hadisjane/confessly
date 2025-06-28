@@ -52,7 +52,7 @@ func InitMigrations() error {
 		text TEXT NOT NULL,
 		anon BOOLEAN NOT NULL DEFAULT FALSE,
 		created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-		updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+		updated_at TIMESTAMP DEFAULT NULL,
 		
 		-- Ensure either user_id or guest_uuid is set
 		CONSTRAINT chk_user_or_guest CHECK (
@@ -74,7 +74,8 @@ func InitMigrations() error {
 		confession_id INTEGER REFERENCES confessions(id) NOT NULL,
 		reason TEXT NOT NULL,
 		status VARCHAR(255) NOT NULL DEFAULT 'pending',
-		created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+		created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+		updated_at TIMESTAMP DEFAULT NULL
 	)`
 
 	log.Println("Creating reports table if not exists...")

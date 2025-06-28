@@ -9,6 +9,7 @@ type Report struct {
 	Reason    string    `json:"reason" db:"reason"`
 	Status    string    `json:"status" db:"status"` // "pending", "approved", "rejected"
 	CreatedAt time.Time `json:"created_at" db:"created_at"`
+	UpdatedAt *time.Time `json:"updated_at" db:"updated_at,omitempty"`
 }
 
 type UpdateReport struct {

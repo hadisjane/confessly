@@ -106,7 +106,7 @@ func UnbanGuestUser(uuid string) error {
 }
 
 func UpdateReport(reportID int, updateReq models.UpdateReport) error {
-	_, err := db.GetDB().Exec("UPDATE reports SET status = $1 WHERE id = $2", updateReq.Status, reportID)
+	_, err := db.GetDB().Exec("UPDATE reports SET status = $1, updated_at = CURRENT_TIMESTAMP WHERE id = $2", updateReq.Status, reportID)
 	if err != nil {
 		return err
 	}
