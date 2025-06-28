@@ -1,9 +1,9 @@
 package controller
 
 import (
-	"Confessly/internal/models"
-	"Confessly/internal/service"
-	"Confessly/utils"
+	"github.com/hadisjane/confessly/internal/models"
+	"github.com/hadisjane/confessly/internal/service"
+	"github.com/hadisjane/confessly/utils"
 	"net/http"
 
 	"github.com/gin-gonic/gin"

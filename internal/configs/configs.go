@@ -1,7 +1,7 @@
 package configs
 
 import (
-	"Confessly/internal/models"
+	"github.com/hadisjane/confessly/internal/models"
 	"encoding/json"
 	"fmt"
 	"github.com/joho/godotenv"

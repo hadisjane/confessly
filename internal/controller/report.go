@@ -1,10 +1,10 @@
 package controller
 
 import (
-	"Confessly/internal/errs"
-	"Confessly/internal/middleware"
-	"Confessly/internal/models"
-	"Confessly/internal/service"
+	"github.com/hadisjane/confessly/internal/errs"
+	"github.com/hadisjane/confessly/internal/middleware"
+	"github.com/hadisjane/confessly/internal/models"
+	"github.com/hadisjane/confessly/internal/service"
 	"fmt"
 	"net/http"
 

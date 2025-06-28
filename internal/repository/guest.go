@@ -1,8 +1,8 @@
 package repository
 
 import (
-	"Confessly/internal/db"
-	"Confessly/internal/models"
+	"github.com/hadisjane/confessly/internal/db"
+	"github.com/hadisjane/confessly/internal/models"
 	"time"
 )
 

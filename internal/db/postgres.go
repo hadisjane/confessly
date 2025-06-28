@@ -1,7 +1,7 @@
 package db
 
 import (
-	"Confessly/internal/configs"
+	"github.com/hadisjane/confessly/internal/configs"
 	"fmt"
 	"os"
 	"github.com/jmoiron/sqlx"

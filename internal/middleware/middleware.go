@@ -1,11 +1,11 @@
 package middleware
 
 import (
-	"Confessly/internal/db"
-	"Confessly/internal/models"
-	"Confessly/internal/service"
-	"Confessly/logger"
-	"Confessly/utils"
+	"github.com/hadisjane/confessly/internal/db"
+	"github.com/hadisjane/confessly/internal/models"
+	"github.com/hadisjane/confessly/internal/service"
+	"github.com/hadisjane/confessly/logger"
+	"github.com/hadisjane/confessly/utils"
 	"net/http"
 	"strings"
 

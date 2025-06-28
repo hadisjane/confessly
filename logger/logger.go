@@ -1,7 +1,7 @@
 package logger
 
 import (
-	"Confessly/internal/configs"
+	"github.com/hadisjane/confessly/internal/configs"
 	"fmt"
 	"io"
 	"log"

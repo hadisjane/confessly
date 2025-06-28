@@ -1,11 +1,11 @@
 package main
 
 import (
-	_ "Confessly/docs" // Import the generated docs package
-	"Confessly/internal/configs"
-	"Confessly/internal/controller"
-	"Confessly/internal/db"
-	"Confessly/logger"
+	_ "github.com/hadisjane/confessly/docs" // Import the generated docs package
+	"github.com/hadisjane/confessly/internal/configs"
+	"github.com/hadisjane/confessly/internal/controller"
+	"github.com/hadisjane/confessly/internal/db"
+	"github.com/hadisjane/confessly/logger"
 	"log"
 )
 

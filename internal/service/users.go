@@ -1,10 +1,10 @@
 package service
 
 import (
-	"Confessly/internal/errs"
-	"Confessly/internal/models"
-	"Confessly/internal/repository"
-	"Confessly/utils"
+	"github.com/hadisjane/confessly/internal/errs"
+	"github.com/hadisjane/confessly/internal/models"
+	"github.com/hadisjane/confessly/internal/repository"
+	"github.com/hadisjane/confessly/utils"
 	"errors"
 )
 

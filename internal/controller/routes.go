@@ -1,9 +1,9 @@
 package controller
 
 import (
-	"Confessly/internal/configs"
-	"Confessly/internal/middleware"
-	"Confessly/logger"
+	"github.com/hadisjane/confessly/internal/configs"
+	"github.com/hadisjane/confessly/internal/middleware"
+	"github.com/hadisjane/confessly/logger"
 	"fmt"
 
 	"github.com/gin-gonic/gin"

@@ -1,9 +1,9 @@
 package repository
 
 import (
-	"Confessly/internal/db"
-	"Confessly/internal/errs"
-	"Confessly/internal/models"
+	"github.com/hadisjane/confessly/internal/db"
+	"github.com/hadisjane/confessly/internal/errs"
+	"github.com/hadisjane/confessly/internal/models"
 )
 
 // Check if confession exists

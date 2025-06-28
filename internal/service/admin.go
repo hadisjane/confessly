@@ -1,8 +1,8 @@
 package service
 
 import (
-	"Confessly/internal/models"
-	"Confessly/internal/repository"
+	"github.com/hadisjane/confessly/internal/models"
+	"github.com/hadisjane/confessly/internal/repository"
 )
 
 func GetReports() []models.Report {

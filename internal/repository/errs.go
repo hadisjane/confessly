@@ -1,7 +1,7 @@
 package repository
 
 import (
-	"Confessly/internal/errs"
+	"github.com/hadisjane/confessly/internal/errs"
 	"database/sql"
 	"errors"
 )

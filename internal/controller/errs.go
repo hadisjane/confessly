@@ -1,7 +1,7 @@
 package controller
 
 import (
-	"Confessly/internal/errs"
+	"github.com/hadisjane/confessly/internal/errs"
 	"errors"
 	"fmt"
 	"net/http"
