@@ -1084,6 +1084,9 @@ const docTemplate = `{
                     "description": "\"pending\", \"approved\", \"rejected\"",
                     "type": "string"
                 },
+                "updated_at": {
+                    "type": "string"
+                },
                 "user_id": {
                     "type": "integer"
                 }
