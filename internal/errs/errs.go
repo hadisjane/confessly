@@ -15,5 +15,7 @@ var (
 	ErrForbiddenDelete          = errors.New("you don't have permission to delete this confession")
 	ErrReportExists             = errors.New("you have already reported this confession")
 	ErrUserBanned               = errors.New("your account has been banned")
+	ErrUserAlreadyBanned        = errors.New("user is already banned")
+	ErrUserNotBanned            = errors.New("user is not banned")
 	ErrInternalServer           = errors.New("internal server error")
 )

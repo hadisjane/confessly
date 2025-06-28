@@ -5,7 +5,6 @@ import (
 	"github.com/hadisjane/confessly/internal/middleware"
 	"github.com/hadisjane/confessly/internal/models"
 	"github.com/hadisjane/confessly/internal/service"
-	"errors"
 	"net/http"
 	"strconv"
 
@@ -147,7 +146,7 @@ func BanUser(c *gin.Context) {
 
 	// Check if user is already banned
 	if user.Banned {
-		HandleError(c, errors.New("user is already banned"))
+		HandleError(c, errs.ErrUserAlreadyBanned)
 		return
 	}
 
@@ -193,7 +192,7 @@ func UnbanUser(c *gin.Context) {
 
 	// Check if user is already unbanned
 	if !user.Banned {
-		HandleError(c, errors.New("user is not banned"))
+		HandleError(c, errs.ErrUserNotBanned)
 		return
 	}
 
@@ -241,7 +240,7 @@ func BanGuestUser(c *gin.Context) {
 	}
 
 	if isBanned {
-		HandleError(c, errors.New("guest user is already banned"))
+		HandleError(c, errs.ErrUserAlreadyBanned)
 		return
 	}
 
@@ -289,7 +288,7 @@ func UnbanGuestUser(c *gin.Context) {
 	}
 
 	if !isBanned {
-		HandleError(c, errors.New("guest user is not banned"))
+		HandleError(c, errs.ErrUserNotBanned)
 		return
 	}
 
