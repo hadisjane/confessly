@@ -17,13 +17,13 @@
    "app_params": {
      "gin_mode": "debug",
      "port_run": ":8081",
-     "server_url": "localhost",
+     "server_url": "0.0.0.0",
      "server_name": "Confessly"
    },
    "postgres_params": {
-     "host": "localhost",
+     "host": "db",
      "port": "5432",
      "user": "postgres",
-     "database": "confessly_db"
+     "database": "confessly"
    }
  }

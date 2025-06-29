@@ -4,7 +4,7 @@ import (
 	"github.com/hadisjane/confessly/internal/models"
 	"encoding/json"
 	"fmt"
-	"github.com/joho/godotenv"
+	//"github.com/joho/godotenv"
 	"log"
 	"os"
 )
@@ -15,10 +15,10 @@ func ReadSettings() error {
 	fmt.Println("Loading .env file")
 
 	// Просто грузим .env в переменные окружения
-	err := godotenv.Load()
-	if err != nil {
-		fmt.Println(".env file not found, using system environment variables")
-	}
+	// err := godotenv.Load()
+	// if err != nil {
+	// 	fmt.Println(".env file not found, using system environment variables")
+	// }
 
 	fmt.Println("Reading settings file: configs/configs.json")
 	configFile, err := os.Open("internal/configs/configs.json")

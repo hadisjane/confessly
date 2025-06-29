@@ -1,12 +1,13 @@
 package controller
 
 import (
+	"net/http"
+	"strconv"
+
 	"github.com/hadisjane/confessly/internal/errs"
 	"github.com/hadisjane/confessly/internal/middleware"
 	"github.com/hadisjane/confessly/internal/models"
 	"github.com/hadisjane/confessly/internal/service"
-	"net/http"
-	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
@@ -25,8 +26,8 @@ func Ping(c *gin.Context) {
 
 type CreateConfessionRequest struct {
 	Title string `json:"title" binding:"required"`
-	Text string `json:"text" binding:"required"`
-	Anon bool   `json:"anon"`
+	Text  string `json:"text" binding:"required"`
+	Anon  bool   `json:"anon"`
 }
 
 // CreateConfession godoc
@@ -309,7 +310,7 @@ func DeleteConfession(c *gin.Context) {
 // @Router /confessions/search [get]
 func SearchConfessions(c *gin.Context) {
 	query := c.Query("q")
-	
+
 	if query == "" {
 		confessions, err := service.GetAllConfessions()
 		if err != nil {
@@ -321,7 +322,7 @@ func SearchConfessions(c *gin.Context) {
 		})
 		return
 	}
-	
+
 	confessions, err := service.SearchConfessionsByTitle(query)
 	if err != nil {
 		HandleError(c, err)
