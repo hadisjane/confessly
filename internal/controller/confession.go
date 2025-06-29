@@ -317,6 +317,21 @@ func SearchConfessions(c *gin.Context) {
 			HandleError(c, err)
 			return
 		}
+
+		// Hide sensitive info for non-admin users
+		userRole, _ := c.Get(middleware.RoleCtx)
+		userRoleStr, _ := userRole.(string)
+
+		if userRoleStr != "admin" {
+			for i := range confessions {
+				if confessions[i].Anon {
+					confessions[i].UserID = nil
+					confessions[i].GuestUUID = nil
+					confessions[i].Username = ""
+				}
+			}
+		}
+
 		c.JSON(http.StatusOK, gin.H{
 			"confessions": confessions,
 		})
