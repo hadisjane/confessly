@@ -7,6 +7,7 @@
   [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-13+-4169E1?style=flat&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
   
   [![Swagger](https://img.shields.io/badge/Swagger-85EA2D?style=flat&logo=swagger&logoColor=white)](/swagger/index.html)
+  [![Docker](https://img.shields.io/badge/Docker-00ADD8?style=flat&logo=docker&logoColor=white)](https://www.docker.com/)
 </div>
 
 ## 📝 О проекте
