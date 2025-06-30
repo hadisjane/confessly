@@ -148,23 +148,18 @@ func GuestUUIDMiddleware() gin.HandlerFunc {
 		// Check for guest UUID in cookie
 		guestUUID, err := c.Cookie("guest_uuid")
 		if err != nil || guestUUID == "" {
-			// If no cookie, generate a new guest UUID
-			guestUUID = uuid.New().String()
-			c.SetCookie("guest_uuid", guestUUID, 30*24*60*60, "/", "", false, true)
+			// If no cookie, generate a new guest UUID and create user
+			createNewGuestUser(c)
+			return
+		}
 
-			// Create a new guest user
-			guest := models.GuestUser{
-				UUID:     guestUUID,
-				Banned:   false,
-			}
-			
-			// Save guest to database
-			err = service.CreateGuestUser(guest)
-			if err != nil {
-				logger.Error.Printf("Failed to create guest user: %v", err)
-				c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": "failed to create guest user"})
-				return
-			}
+		// Check if guest exists in database
+		_, err = service.GetGuestUser(guestUUID)
+		if err != nil {
+			// If guest doesn't exist, create a new one
+			logger.Info.Printf("Guest user %s not found, creating new one", guestUUID)
+			createNewGuestUser(c)
+			return
 		}
 
 		// Check if guest is banned
@@ -185,4 +180,26 @@ func GuestUUIDMiddleware() gin.HandlerFunc {
 		c.Set(GuestUUIDCtx, guestUUID)
 		c.Next()
 	}
+}
+
+func createNewGuestUser(c *gin.Context) {
+	// Generate a new guest UUID
+	guestUUID := uuid.New().String()
+	
+	// Set cookie with new UUID
+	c.SetCookie("guest_uuid", guestUUID, 30*24*60*60, "/", "", false, true)
+
+	// Create and save new guest user
+	guest := models.GuestUser{
+		UUID:   guestUUID,
+		Banned: false,
+	}
+
+	if err := service.CreateGuestUser(guest); err != nil {
+		logger.Error.Printf("Failed to create guest user: %v", err)
+		c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": "failed to create guest user"})
+		return
+	}
+
+	c.Set(GuestUUIDCtx, guestUUID)
 }

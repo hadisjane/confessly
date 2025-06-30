@@ -1,9 +1,10 @@
 package repository
 
 import (
+	"time"
+
 	"github.com/hadisjane/confessly/internal/db"
 	"github.com/hadisjane/confessly/internal/models"
-	"time"
 )
 
 func CreateGuestUser(guestUser models.GuestUser) error {
@@ -35,6 +36,7 @@ func CreateGuestUser(guestUser models.GuestUser) error {
 
 func GetGuestUser(uuid string) (models.GuestUser, error) {
 	var guestUser models.GuestUser
+
 	err := db.GetDB().Get(&guestUser, "SELECT uuid, banned, created_at FROM guest_users WHERE uuid = $1", uuid)
 	if err != nil {
 		return models.GuestUser{}, err
@@ -45,6 +47,7 @@ func GetGuestUser(uuid string) (models.GuestUser, error) {
 
 func IsGuestBanned(uuid string) (bool, error) {
 	var guestUser models.GuestUser
+
 	err := db.GetDB().Get(&guestUser, "SELECT banned FROM guest_users WHERE uuid = $1", uuid)
 	if err != nil {
 		return false, err
