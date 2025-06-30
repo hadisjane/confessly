@@ -41,6 +41,12 @@ func main() {
 	}
 	logger.Info.Println("Database schema initialized successfully")
 
+	// Seed database
+	if err := db.SeedDB(); err != nil {
+		logger.Error.Fatalf("Error seeding database: %v", err)
+	}
+	logger.Info.Println("Database seeded successfully")
+
 	// Start the server
 	if err := controller.RunServer(); err != nil {
 		logger.Error.Fatalf("Error running server: %v", err)
