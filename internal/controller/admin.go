@@ -124,23 +124,42 @@ func DeleteConfessionByAdmin(c *gin.Context) {
 // @Failure 500 {object} map[string]string
 // @Router /admin/users/{id}/ban [post]
 func BanUser(c *gin.Context) {
-	// Get user role from context
+	// Get user role and ID from context
 	userRole, exists := c.Get(middleware.RoleCtx)
 	if !exists || userRole != "admin" {
 		HandleError(c, errs.ErrForbidden)
 		return
 	}
 
-	userID, err := strconv.Atoi(c.Param("id"))
-	if err != nil || userID <= 0 {
+	// Get admin's ID from context
+	adminID, exists := c.Get(middleware.UserIDCtx)
+	if !exists {
+		HandleError(c, errs.ErrUnauthorized)
+		return
+	}
+
+	targetUserID, err := strconv.Atoi(c.Param("id"))
+	if err != nil || targetUserID <= 0 {
 		HandleError(c, errs.ErrInvalidId)
 		return
 	}
 
+	// Prevent admin from banning themselves
+	if adminID == targetUserID {
+		HandleError(c, errs.ErrYouCannotBanYourself)
+		return
+	}
+
 	// First check if user exists and get current ban status
-	user, err := service.GetUser(userID)
+	user, err := service.GetUser(targetUserID)
 	if err != nil {
 		HandleError(c, err)
+		return
+	}
+
+	// Prevent admin from banning other admins
+	if user.Role == "admin" {
+		HandleError(c, errs.ErrYouCannotBanOtherAdmin)
 		return
 	}
 
@@ -151,7 +170,7 @@ func BanUser(c *gin.Context) {
 	}
 
 	// Ban the user
-	if err := service.BanUser(userID); err != nil {
+	if err := service.BanUser(targetUserID); err != nil {
 		HandleError(c, err)
 		return
 	}

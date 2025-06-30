@@ -31,7 +31,8 @@ func HandleError(c *gin.Context, err error) {
 		errors.Is(err, errs.ErrUnauthorized) ||
 		errors.Is(err, errs.ErrReportExists) ||
 		errors.Is(err, errs.ErrUserAlreadyBanned) ||
-		errors.Is(err, errs.ErrUserNotBanned) {
+		errors.Is(err, errs.ErrUserNotBanned) ||
+		errors.Is(err, errs.ErrYouCannotBanYourself) {
 		c.JSON(http.StatusBadRequest, gin.H{
 			"error": err.Error(),
 		})
@@ -53,7 +54,8 @@ func HandleError(c *gin.Context, err error) {
 		errors.Is(err, errs.ErrIncorrectUsernameOrPassword) ||
 		errors.Is(err, errs.ErrForbidden) ||
 		errors.Is(err, errs.ErrForbiddenDelete) ||
-		errors.Is(err, errs.ErrUserBanned) {
+		errors.Is(err, errs.ErrUserBanned) ||
+		errors.Is(err, errs.ErrYouCannotBanOtherAdmin) {
 		c.JSON(http.StatusForbidden, gin.H{
 			"error": err.Error(),
 		})

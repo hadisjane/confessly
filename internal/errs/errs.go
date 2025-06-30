@@ -17,5 +17,7 @@ var (
 	ErrUserBanned               = errors.New("your account has been banned")
 	ErrUserAlreadyBanned        = errors.New("user is already banned")
 	ErrUserNotBanned            = errors.New("user is not banned")
+	ErrYouCannotBanYourself     = errors.New("you cannot ban yourself")
+	ErrYouCannotBanOtherAdmin   = errors.New("you cannot ban other administrators")
 	ErrInternalServer           = errors.New("internal server error")
 )
